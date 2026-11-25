@@ -67,8 +67,8 @@
     "alt.overview": "Inicio de Rewind OS: almacenamiento usado, espacio libre, espacio recuperable, memoria y un indicador de uso por unidad",
     "alt.analyzer": "Analizador de disco: tamaño total, archivos, carpetas y tiempo de análisis sobre una lista de carpetas y un mapa de árbol",
     "alt.cleanup": "Limpieza: basura encontrada, seleccionada para limpiar y dónde está la basura como barra apilada",
-    "alt.programs": "Programas instalados: número, tamaño declarado por los instaladores y una lista con un botón de desinstalar por programa",
-    "alt.startup": "Programas de inicio: qué arranca con el sistema, desactivados, necesarios para el sistema y una lista con interruptores"
+    "alt.programs": "Programas instalados: número, tamaño declarado por los instaladores, los programas como tarjetas y los detalles del elegido con un botón de desinstalar",
+    "alt.startup": "Programas de inicio: qué arranca con el sistema, desactivados, necesarios para el sistema, las entradas como tarjetas y los detalles de la elegida con su interruptor"
   };
 
   var english = {};
