@@ -32,7 +32,7 @@
   <main id="top">
     <section class="hero">
       <div class="wrap hero-inner">
-        <p class="eyebrow" data-i18n="hero.eyebrow">Free and open source · Windows · Linux</p>
+        <p class="eyebrow" data-i18n="hero.eyebrow">Free and open source · Windows · Linux · macOS</p>
         <h1 data-i18n="hero.title">See what is using your disk.<br>Take your computer back to clean.</h1>
         <p class="lead" data-i18n="hero.lead">Rewind OS finds temporary files, caches, leftovers of programs you uninstalled, large forgotten files and programs that start for no reason, and removes them safely. It also shows what slows your computer down and whether your drives are failing. A small, fast, native app written only in Rust.</p>
         <div class="actions">
@@ -203,13 +203,14 @@
           </div>
           <div class="card">
             <h3>macOS</h3>
-            <p data-i18n="dl.mac">The engine already runs on macOS and is checked on every change. Builds to download are on the way; until then, build it with Rust.</p>
-            <div class="dl-links">
-              <a class="btn" href="https://github.com/rewind-os/rewind-os-app#build" data-i18n="dl.build">Build from source</a>
+            <p data-i18n="dl.mac">macOS 11 or newer, Apple silicon and Intel in one app. Open the .dmg and drag Rewind OS to Applications. Some tools are still Windows and Linux only.</p>
+            <div class="dl-links" data-os="macos">
+              <a class="btn" href="https://github.com/rewind-os/rewind-os-app/releases/latest" data-i18n="dl.releases">Get it from Releases</a>
             </div>
           </div>
         </div>
         <p class="note" data-i18n="dl.unsigned">Builds are not code-signed yet, so Windows SmartScreen may warn the first time you open the app: choose “More info”, then “Run anyway”.</p>
+        <p class="note" data-i18n="dl.macunsigned">On macOS the app is not signed by an Apple developer account yet, so the first time macOS asks to confirm it: Control-click the app and choose Open, or go to System Settings, Privacy &amp; Security, Open Anyway.</p>
       </div>
     </section>
   </main>

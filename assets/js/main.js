@@ -10,7 +10,7 @@
     "nav.safety": "Seguridad",
     "nav.cli": "Línea de comandos",
     "nav.download": "Descargar",
-    "hero.eyebrow": "Libre y de código abierto · Windows · Linux",
+    "hero.eyebrow": "Libre y de código abierto · Windows · Linux · macOS",
     "hero.title": "Mira qué ocupa tu disco.<br>Deja tu equipo limpio otra vez.",
     "hero.lead": "Rewind OS encuentra archivos temporales, cachés, restos de programas que desinstalaste, archivos grandes olvidados y programas que arrancan sin motivo, y los quita con seguridad. También muestra qué ralentiza tu equipo y si tus discos están fallando. Una app pequeña, rápida y nativa, escrita solo en Rust.",
     "hero.download": "Descargar para Windows",
@@ -69,9 +69,9 @@
     "dl.lead": "Gratis, sin cuenta y sin anuncios. Comprueba tu descarga con",
     "dl.win": "Windows 10 y 11, x64 y ARM64. Instálala con el MSI (menú Inicio, desinstalar desde Configuración) o usa el zip portable sin instalar.",
     "dl.linux": "x64 y ARM64: un .deb para Debian y Ubuntu, un .rpm para Fedora y openSUSE, un paquete Flatpak o un tar.gz.",
-    "dl.mac": "El motor ya funciona en macOS y se comprueba en cada cambio. Las descargas llegarán pronto; mientras, compílala con Rust.",
+    "dl.mac": "macOS 11 o posterior, Apple Silicon e Intel en una sola app. Abre el .dmg y arrastra Rewind OS a Aplicaciones. Algunas herramientas aún son solo de Windows y Linux.",
+    "dl.macunsigned": "En macOS la app aún no está firmada con una cuenta de desarrollador de Apple, así que la primera vez macOS pide confirmarla: haz clic con Control en la app y elige Abrir, o ve a Ajustes del Sistema, Privacidad y seguridad, Abrir igualmente.",
     "dl.releases": "Ir a las versiones",
-    "dl.build": "Compilar el código",
     "dl.unsigned": "Las versiones aún no están firmadas, así que Windows SmartScreen puede avisar la primera vez: elige «Más información» y luego «Ejecutar de todas formas».",
     "dl.version": "Última versión: {v}.",
     "footer.licence": "Código abierto con licencia MIT o Apache-2.0.",
@@ -140,6 +140,10 @@
     [/linux-arm64\.tar\.gz$/, "tar.gz ARM64"]
   ];
 
+  var MACOS = [
+    [/macos-universal\.dmg$/, ".dmg (Apple silicon + Intel)", true]
+  ];
+
   function fill(os, rules, assets) {
     var box = document.querySelector('.dl-links[data-os="' + os + '"]');
     if (!box) return;
@@ -168,6 +172,7 @@
         if (msi && main) main.href = msi.browser_download_url;
         fill("windows", WINDOWS, data.assets);
         fill("linux", LINUX, data.assets);
+        fill("macos", MACOS, data.assets);
         showVersion();
       })
       .catch(function () { /* offline or rate-limited: the releases page links stay */ });
