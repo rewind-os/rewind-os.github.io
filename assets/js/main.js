@@ -12,7 +12,7 @@
     "nav.download": "Descargar",
     "hero.eyebrow": "Libre y de código abierto · Windows · Linux",
     "hero.title": "Mira qué ocupa tu disco.<br>Deja tu equipo limpio otra vez.",
-    "hero.lead": "Rewind OS encuentra archivos temporales, cachés, restos de programas que desinstalaste, archivos grandes olvidados y programas que arrancan sin motivo, y los quita con seguridad. Una app pequeña, rápida y nativa, escrita solo en Rust.",
+    "hero.lead": "Rewind OS encuentra archivos temporales, cachés, restos de programas que desinstalaste, archivos grandes olvidados y programas que arrancan sin motivo, y los quita con seguridad. También muestra qué ralentiza tu equipo y si tus discos están fallando. Una app pequeña, rápida y nativa, escrita solo en Rust.",
     "hero.download": "Descargar para Windows",
     "hero.other": "Otros sistemas",
     "hero.meta": "Instalador MSI o zip portable · x64 y ARM64",
@@ -20,7 +20,7 @@
     "stats.ask": "archivos borrados sin preguntar",
     "stats.engine": "motor para la app, la CLI y los asistentes",
     "stats.licence": "código abierto, sin anuncios ni cuenta",
-    "features.title": "Todo lo que llena un disco, en un solo sitio",
+    "features.title": "Todo lo que llena un disco o ralentiza un equipo, en un solo sitio",
     "f1.tag": "Analizador de disco",
     "f1.title": "Descubre qué ocupa espacio, carpeta a carpeta",
     "f1.body": "Analiza en paralelo cualquier unidad o carpeta y lo muestra como lista ordenada, mapa de árbol, archivos más grandes y tamaño por tipo de archivo. Abre cualquier cosa en el explorador o muévela a la papelera.",
@@ -42,6 +42,17 @@
     "f4.body": "Activa y desactiva los programas de inicio, las tareas programadas que se añaden ellos mismos y sus servicios. Aligera Windows quitando anuncios, sugerencias y seguimiento con una lista cerrada de ajustes documentados, todos reversibles.",
     "f4.l1": "Lo que el sistema necesita se puede activar, nunca desactivar",
     "f4.l2": "Los servicios pasan a iniciarse cuando hacen falta, nunca se deshabilitan",
+    "f5.tag": "Velocidad",
+    "f5.title": "Descubre qué ralentiza tu equipo",
+    "f5.body": "Mira cuánto tarda el equipo en arrancar y qué lo hizo más lento, según los propios registros del sistema. Mira qué programas abiertos usan más procesador y memoria ahora mismo, y cierra uno. Cambia el plan de energía cuando el equipo ahorra energía a costa de la velocidad.",
+    "f5.l1": "Un programa que retrasa el arranque se puede desactivar ahí mismo",
+    "f5.l2": "A los programas se les pide cerrarse como al cerrar su ventana; forzarlo vuelve a preguntar",
+    "f5.l3": "Nunca cierra los programas del sistema ni los de otras cuentas",
+    "f6.tag": "Salud de los discos",
+    "f6.title": "Entérate antes de que un disco falle",
+    "f6.body": "Lo que cada disco dice de sí mismo: su salud, temperatura, desgaste, horas encendido y errores. Si uno falla o requiere atención, Inicio lo avisa lo primero, para que copies tus archivos a tiempo. Optimiza los discos como hace el sistema por su cuenta: TRIM en los SSD y desfragmentación de discos duros en Windows.",
+    "f6.l1": "Un disco que dice estar bien también recibe un aviso si sus cifras dicen lo contrario",
+    "f6.l2": "Leer no cambia nada; optimizar pregunta antes y no borra nada",
     "safety.title": "La seguridad, lo primero",
     "safety.lead": "Un limpiador nunca debe dejar un equipo sin arrancar ni borrar archivos personales. Cada borrado pasa por una única protección, con pruebas para cada sitio que puede tocar.",
     "s1.title": "Pregunta antes de actuar",
@@ -68,7 +79,9 @@
     "alt.analyzer": "Analizador de disco: tamaño total, archivos, carpetas y tiempo de análisis sobre una lista de carpetas y un mapa de árbol",
     "alt.cleanup": "Limpieza: basura encontrada, seleccionada para limpiar y dónde está la basura como barra apilada",
     "alt.programs": "Programas instalados: número, tamaño declarado por los instaladores, los programas como tarjetas y los detalles del elegido con un botón de desinstalar",
-    "alt.startup": "Programas de inicio: qué arranca con el sistema, desactivados, necesarios para el sistema, las entradas como tarjetas y los detalles de la elegida con su interruptor"
+    "alt.startup": "Programas de inicio: qué arranca con el sistema, desactivados, necesarios para el sistema, las entradas como tarjetas y los detalles de la elegida con su interruptor",
+    "alt.speed": "Velocidad de arranque: el último arranque, el tiempo hasta que el escritorio estuvo listo, el paso más lento y lo que más tardó en arrancar, cada uno con su tipo y duración",
+    "alt.disks": "Salud de los discos: un SSD sano y un disco duro que requiere atención, con temperatura, horas encendido, sectores dañados y los motivos"
   };
 
   var english = {};

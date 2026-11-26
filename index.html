@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rewind OS — take your disk back to clean</title>
-  <meta name="description" content="A small, fast, native app written in Rust that shows what uses your disk and removes what you do not need: temporary files, caches, leftovers of uninstalled programs and startup programs.">
+  <meta name="description" content="A small, fast, native app written in Rust that shows what uses your disk and removes what you do not need: temporary files, caches, leftovers of uninstalled programs and startup programs. It also shows what slows your computer down and whether your drives are failing.">
   <meta name="theme-color" content="#0e1116">
   <meta property="og:title" content="Rewind OS">
   <meta property="og:description" content="See what is using your disk and take your computer back to clean. Native, open source, written in Rust.">
@@ -34,7 +34,7 @@
       <div class="wrap hero-inner">
         <p class="eyebrow" data-i18n="hero.eyebrow">Free and open source · Windows · Linux</p>
         <h1 data-i18n="hero.title">See what is using your disk.<br>Take your computer back to clean.</h1>
-        <p class="lead" data-i18n="hero.lead">Rewind OS finds temporary files, caches, leftovers of programs you uninstalled, large forgotten files and programs that start for no reason, and removes them safely. A small, fast, native app written only in Rust.</p>
+        <p class="lead" data-i18n="hero.lead">Rewind OS finds temporary files, caches, leftovers of programs you uninstalled, large forgotten files and programs that start for no reason, and removes them safely. It also shows what slows your computer down and whether your drives are failing. A small, fast, native app written only in Rust.</p>
         <div class="actions">
           <a class="btn primary" id="download-main" href="https://github.com/rewind-os/rewind-os-app/releases/latest">
             <span data-i18n="hero.download">Download for Windows</span>
@@ -64,7 +64,7 @@
 
     <section id="features" class="features">
       <div class="wrap">
-        <h2 class="section-title" data-i18n="features.title">Everything that fills a disk, in one place</h2>
+        <h2 class="section-title" data-i18n="features.title">Everything that fills a disk or slows a computer, in one place</h2>
 
         <article class="feature">
           <div class="text">
@@ -118,6 +118,33 @@
           </div>
           <figure class="shot"><img src="assets/img/startup.png" width="1200" height="780" loading="lazy" alt="Startup programs: what starts with the system, turned off, needed by the system, entries as cards and the selected one's details with its switch" data-i18n-alt="alt.startup"></figure>
         </article>
+
+        <article class="feature">
+          <div class="text">
+            <p class="tag" data-i18n="f5.tag">Speed</p>
+            <h3 data-i18n="f5.title">Find out what slows your computer down</h3>
+            <p data-i18n="f5.body">See how long the computer takes to start and what made it slower, from the system's own records. See which open programs use the most processor and memory right now, and close one. Switch the power plan when the computer saves energy at the cost of speed.</p>
+            <ul>
+              <li data-i18n="f5.l1">A program that slows the start can be turned off right there</li>
+              <li data-i18n="f5.l2">Programs are asked to close as their window would; forcing it asks again</li>
+              <li data-i18n="f5.l3">The system's own programs and other accounts' are never closed</li>
+            </ul>
+          </div>
+          <figure class="shot"><img src="assets/img/speed.png" width="1200" height="780" loading="lazy" alt="Startup speed: the last start, time until the desktop was ready, the slowest step, and what took longest to start, each with its kind and duration" data-i18n-alt="alt.speed"></figure>
+        </article>
+
+        <article class="feature reverse">
+          <div class="text">
+            <p class="tag" data-i18n="f6.tag">Disk health</p>
+            <h3 data-i18n="f6.title">Know when a drive is about to fail</h3>
+            <p data-i18n="f6.body">What each drive reports about itself: its health, temperature, wear, hours powered on and errors. If one is failing or needs attention, Home says so first, so you can copy your files in time. Optimize the drives the way the system does on its own: TRIM on SSDs, defragmentation of hard drives on Windows.</p>
+            <ul>
+              <li data-i18n="f6.l1">A drive that says it is fine still gets a warning when its figures show otherwise</li>
+              <li data-i18n="f6.l2">Reading changes nothing; optimizing asks first and deletes nothing</li>
+            </ul>
+          </div>
+          <figure class="shot"><img src="assets/img/disks.png" width="1200" height="780" loading="lazy" alt="Disk health: a healthy SSD and a hard drive that needs attention, with temperature, hours powered on, damaged sectors and the reasons" data-i18n-alt="alt.disks"></figure>
+        </article>
       </div>
     </section>
 
@@ -146,8 +173,10 @@
 <span class="p">$</span> rewind-os-cli scan C:\ --top 30
 <span class="c"># clean the categories marked safe</span>
 <span class="p">$</span> rewind-os-cli clean run --defaults --yes
-<span class="c"># startup programs</span>
-<span class="p">$</span> rewind-os-cli startup list
+<span class="c"># what slowed the last starts</span>
+<span class="p">$</span> rewind-os-cli boot
+<span class="c"># are the drives healthy?</span>
+<span class="p">$</span> rewind-os-cli disks health
 <span class="c"># for scripts</span>
 <span class="p">$</span> rewind-os-cli --json overview</code></pre>
       </div>
