@@ -75,6 +75,8 @@
     "dl.mac": "macOS 11 o posterior, Apple Silicon e Intel en una sola app. Abre el .dmg y arrastra Rewind OS a Aplicaciones. Algunas herramientas aún son solo de Windows y Linux.",
     "dl.macunsigned": "En macOS la app aún no está firmada con una cuenta de desarrollador de Apple, así que la primera vez macOS pide confirmarla: haz clic con Control en la app y elige Abrir, o ve a Ajustes del Sistema, Privacidad y seguridad, Abrir igualmente.",
     "dl.releases": "Ir a las versiones",
+    "dl.apt.title": "Debian y Ubuntu: instálalo con apt",
+    "dl.apt.body": "Añade el repositorio una vez; después <code>sudo apt upgrade</code> mantiene Rewind OS al día. En un equipo sin escritorio, añade <code>--no-install-recommends</code> para instalar solo lo que necesita <code>rewind-os-cli</code>.",
     "dl.unsigned": "Las versiones aún no están firmadas, así que Windows SmartScreen puede avisar la primera vez: elige «Más información» y luego «Ejecutar de todas formas».",
     "dl.version": "Última versión: {v}.",
     "footer.licence": "Código abierto con licencia MIT o Apache-2.0.",

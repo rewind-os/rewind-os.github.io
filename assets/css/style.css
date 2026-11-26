@@ -147,6 +147,10 @@ h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); line-height: 1.12; letter-spacing: -
 .terminal .c { color: #6f7a8a; }
 .terminal .p { color: #4c8dff; user-select: none; }
 
+.apt { margin-top: 32px; }
+.apt h3 { margin: 0 0 8px; font-size: 1.1rem; }
+.apt p { color: var(--muted); margin: 0 0 16px; font-size: 0.95rem; }
+
 /* Footer */
 .footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: 0.9rem; }
 .footer-inner { display: flex; gap: 24px; align-items: center; justify-content: space-between; flex-wrap: wrap; }

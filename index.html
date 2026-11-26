@@ -212,6 +212,16 @@
             </div>
           </div>
         </div>
+        <div class="apt">
+          <h3 data-i18n="dl.apt.title">Debian and Ubuntu: install with apt</h3>
+          <p data-i18n="dl.apt.body">Add the repository once; <code>sudo apt upgrade</code> then keeps Rewind OS up to date. On a computer without a desktop, add <code>--no-install-recommends</code> to install only what <code>rewind-os-cli</code> needs.</p>
+          <pre class="terminal" aria-label="Install with apt"><code><span class="c"># the repository's signing key</span>
+<span class="p">$</span> curl -fsSL https://rewind-os.github.io/rewind-os-app/rewind-os.gpg | sudo tee /usr/share/keyrings/rewind-os.gpg &gt;/dev/null
+<span class="c"># the repository</span>
+<span class="p">$</span> echo "deb [signed-by=/usr/share/keyrings/rewind-os.gpg] https://rewind-os.github.io/rewind-os-app stable main" | sudo tee /etc/apt/sources.list.d/rewind-os.list
+<span class="c"># install</span>
+<span class="p">$</span> sudo apt update &amp;&amp; sudo apt install rewind-os</code></pre>
+        </div>
         <p class="note" data-i18n="dl.unsigned">Builds are not code-signed yet, so Windows SmartScreen may warn the first time you open the app: choose “More info”, then “Run anyway”.</p>
         <p class="note" data-i18n="dl.macunsigned">On macOS the app is not signed by an Apple developer account yet, so the first time macOS asks to confirm it: Control-click the app and choose Open, or go to System Settings, Privacy &amp; Security, Open Anyway.</p>
       </div>
