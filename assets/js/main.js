@@ -42,7 +42,7 @@
     "f3.l2": "APT, RPM, pacman, Flatpak y Snap en Linux",
     "f4.tag": "Inicio y Windows",
     "f4.title": "Un arranque más rápido y un Windows más tranquilo",
-    "f4.body": "Activa y desactiva los programas de inicio, las tareas programadas que se añaden ellos mismos y sus servicios. Aligera Windows quitando anuncios, sugerencias y seguimiento con una lista cerrada de ajustes documentados, todos reversibles.",
+    "f4.body": "Activa y desactiva los programas de inicio, las tareas programadas que se añaden ellos mismos y sus servicios. En macOS, también los agentes de inicio y las apps que se abren al iniciar sesión; un elemento de inicio de sesión que desactivas se puede volver a activar tal como estaba. Aligera Windows quitando anuncios, sugerencias y seguimiento con una lista cerrada de ajustes documentados, todos reversibles.",
     "f4.l1": "Lo que el sistema necesita se puede activar, nunca desactivar",
     "f4.l2": "Los servicios pasan a iniciarse cuando hacen falta, nunca se deshabilitan",
     "f5.tag": "Velocidad",
