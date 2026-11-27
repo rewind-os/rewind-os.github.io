@@ -1,14 +1,14 @@
 /* Rewind OS landing. Same tokens as the app's theme (crates/ui/src/theme.rs). */
 :root {
-  --bg: #0e1116;
-  --bg-deep: #0a0d12;
-  --surface: #161a21;
-  --raised: #1f242e;
-  --text: #e8ecf2;
-  --muted: #9aa4b2;
-  --accent: #4c8dff;
+  --bg: #141414;
+  --bg-deep: #0f0f0f;
+  --surface: #1f1f1f;
+  --raised: #2b2b2b;
+  --text: #e4e4e4;
+  --muted: #a0a0a0;
+  --accent: #4daafc;
   --accent-ink: #06122a;
-  --accent-tint: rgba(76, 141, 255, 0.14);
+  --accent-tint: rgba(77, 170, 252, 0.14);
   --line: rgba(255, 255, 255, 0.06);
   --radius: 12px;
   --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
@@ -145,7 +145,7 @@ h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); line-height: 1.12; letter-spacing: -
 }
 .terminal code { background: none; padding: 0; font-size: inherit; }
 .terminal .c { color: #6f7a8a; }
-.terminal .p { color: #4c8dff; user-select: none; }
+.terminal .p { color: #4daafc; user-select: none; }
 
 .apt { margin-top: 32px; }
 .apt h3 { margin: 0 0 8px; font-size: 1.1rem; }

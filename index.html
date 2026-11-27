@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rewind OS — take your disk back to clean</title>
   <meta name="description" content="A small, fast, native app written in Rust that shows what uses your disk and removes what you do not need: temporary files, caches, leftovers of uninstalled programs and startup programs. It also shows what slows your computer down and whether your drives are failing.">
-  <meta name="theme-color" content="#0e1116">
+  <meta name="theme-color" content="#141414">
   <meta property="og:title" content="Rewind OS">
   <meta property="og:description" content="See what is using your disk and take your computer back to clean. Native, open source, written in Rust.">
   <meta property="og:image" content="https://rewind-os.github.io/assets/img/overview.png">
@@ -168,7 +168,7 @@
       <div class="wrap cli-inner">
         <div class="text">
           <h2 class="section-title" data-i18n="cli.title">Everything the app does, from the command line</h2>
-          <p data-i18n="cli.body">One engine drives the desktop app and <code>rewind-os-cli</code>, so every feature is also a command you can script. With <code>rewind-os-cli mcp</code>, assistants can use the same tools over the Model Context Protocol, read-only unless you open up more, one flag at a time. In a terminal, a line shows how far a scan or a cleanup has got and how long it has taken; Ctrl+C stops it and prints what it did so far, marked as stopped. On a server or over SSH, <code>rewind-os-cli tui</code> opens full-screen views driven by keys: Home, the disk by folder size, the cleanup, which always asks before it cleans, startup programs to turn off and on, installed programs to uninstall, duplicate files, program leftovers and build folders to pick and remove, never the last copy of a file, running programs to close and the system's own maintenance tools.</p>
+          <p data-i18n="cli.body">One engine drives the desktop app and <code>rewind-os-cli</code>, so every feature is also a command you can script. With <code>rewind-os-cli mcp</code>, assistants can use the same tools over the Model Context Protocol, read-only unless you open up more, one flag at a time. In a terminal, a line shows how far a scan or a cleanup has got and how long it has taken; Ctrl+C stops it and prints what it did so far, marked as stopped. On a server or over SSH, <code>rewind-os-cli tui</code> opens full-screen views driven by keys or the mouse: Home, the disk by folder size, the cleanup, which always asks before it cleans, startup programs to turn off and on, installed programs to uninstall, duplicate files, program leftovers and build folders to pick and remove, never the last copy of a file, running programs to close and the system's own maintenance tools.</p>
         </div>
         <pre class="terminal" aria-label="Command line examples"><code><span class="c"># what is worth doing on this computer</span>
 <span class="p">$</span> rewind-os-cli recommend
