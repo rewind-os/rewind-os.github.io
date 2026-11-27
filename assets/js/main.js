@@ -35,6 +35,7 @@
     "f2.l2": "Solo se borran del todo las cachés que se regeneran solas",
     "f2.l3": "Compacta los discos virtuales de WSL y Docker Desktop, que nunca encogen solos",
     "f2.l4": "Borra los puntos de restauración antiguos de Windows y conserva siempre el más reciente de cada unidad",
+    "f2.l5": "Quita los paquetes de drivers antiguos de Windows que no usa ningún dispositivo; la versión más nueva de cada driver se queda siempre",
     "f3.tag": "Programas",
     "f3.title": "Desinstala y recoge lo que los programas dejan atrás",
     "f3.body": "Los programas instalados con su icono, tamaño y fecha, cada uno con su propio desinstalador. Después, Rewind OS encuentra las carpetas a las que ya no se refiere ningún programa instalado y las manda a la papelera.",
