@@ -66,6 +66,8 @@
     "s3.body": "Siempre informa de los archivos que no pudo quitar, las categorías omitidas por falta de permisos y los análisis detenidos.",
     "s4.title": "Usuario normal por defecto",
     "s4.body": "Arranca sin permisos de administrador y solo ofrece reiniciarse con ellos cuando una tarea los necesita.",
+    "tui.title": "La interfaz de terminal",
+    "tui.body": "Aquí en la vista de disco: carpetas por tamaño, Intro abre una, <kbd>f</kbd> muestra los archivos más grandes, <kbd>1</kbd>–<kbd>0</kbd> o un clic cambian de vista.",
     "cli.title": "Todo lo que hace la app, desde la línea de comandos",
     "cli.body": "Un mismo motor mueve la app de escritorio y <code>rewind-os-cli</code>, así que cada función es también un comando que puedes automatizar. Con <code>rewind-os-cli mcp</code>, los asistentes usan las mismas herramientas mediante el Model Context Protocol: solo lectura salvo que abras más, una opción cada vez. En una terminal, una línea muestra cuánto lleva un análisis o una limpieza y el tiempo que va; Ctrl+C lo para y muestra lo hecho hasta entonces, marcado como parado. En un servidor o por SSH, <code>rewind-os-cli tui</code> abre vistas a pantalla completa que se manejan con el teclado o el ratón: Inicio, el disco por tamaño de carpeta, la limpieza, que siempre pregunta antes de limpiar, los programas de inicio para activarlos o desactivarlos, los programas instalados para desinstalarlos, los archivos duplicados, los restos de programas y las carpetas de compilación para elegirlos y quitarlos, nunca la última copia de un archivo, los programas en marcha para cerrarlos y las herramientas de mantenimiento del propio sistema.",
     "dl.title": "Descargar",
@@ -84,6 +86,7 @@
     "alt.analyzer": "Analizador de disco: tamaño total, archivos, carpetas y tiempo de análisis sobre una lista de carpetas y un mapa de árbol",
     "alt.cleanup": "Limpieza: basura encontrada, seleccionada para limpiar y dónde está la basura como barra apilada",
     "alt.programs": "Programas instalados: número, tamaño declarado por los instaladores, los programas como tarjetas y los detalles del elegido con un botón de desinstalar",
+    "alt.tui": "rewind-os-cli tui en la vista de disco: las carpetas de /usr/share por tamaño, con la tercera elegida",
     "alt.startup": "Programas de inicio: qué arranca con el sistema, desactivados, necesarios para el sistema, las entradas como tarjetas y los detalles de la elegida con su interruptor",
     "alt.speed": "Velocidad de arranque: el último arranque, el tiempo hasta que el escritorio estuvo listo, el paso más lento y lo que más tardó en arrancar, cada uno con su tipo y duración",
     "alt.disks": "Salud de los discos: un SSD sano y un disco duro que requiere atención, con temperatura, horas encendido, sectores dañados y los motivos"

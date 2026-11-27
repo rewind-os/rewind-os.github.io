@@ -139,12 +139,16 @@ h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); line-height: 1.12; letter-spacing: -
 .cli p { color: var(--muted); }
 .terminal {
   margin: 0; padding: 22px 24px; border-radius: var(--radius);
-  background: #0a0d12; color: #e8ecf2; overflow-x: auto;
+  background: #0f0f0f; color: #e4e4e4; overflow-x: auto;
   font: 0.9rem/1.7 ui-monospace, "Cascadia Code", "JetBrains Mono", Consolas, monospace;
   box-shadow: var(--shadow);
 }
 .terminal code { background: none; padding: 0; font-size: inherit; }
-.terminal .c { color: #6f7a8a; }
+.terminal .c { color: #8a8a8a; }
+.tui-block { margin-top: 56px; }
+.tui-block h3 { margin: 0 0 8px; }
+.tui-block p { color: var(--muted); margin: 0 0 20px; }
+.tui-shot { max-width: 932px; }
 .terminal .p { color: #4daafc; user-select: none; }
 
 .apt { margin-top: 32px; }
