@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/img/icon-256.png">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026-11-28">
 </head>
 <body>
   <header class="nav">
@@ -133,12 +133,13 @@
 
         <article class="feature reverse">
           <div class="text">
-            <p class="tag" data-i18n="f6.tag">Disk health</p>
-            <h3 data-i18n="f6.title">Know when a drive is about to fail</h3>
+            <p class="tag" data-i18n="f6.tag">Health</p>
+            <h3 data-i18n="f6.title">Know when a drive or the battery wears out</h3>
             <p data-i18n="f6.body">Health, temperature, wear and errors of each drive, and a warning on Home before one fails.</p>
             <ul>
               <li data-i18n="f6.l2">Reading changes nothing</li>
               <li data-i18n="f6.l3">Devices with a driver problem, named on Home</li>
+              <li data-i18n="f6.l4">How much charge the battery still holds, on every system</li>
             </ul>
           </div>
           <figure class="shot"><img src="assets/img/disks.png?v=0.31.0" width="1200" height="780" loading="lazy" alt="Disk health: a healthy SSD and a hard drive that needs attention, with temperature, hours powered on, damaged sectors and the reasons" data-i18n-alt="alt.disks"></figure>
@@ -191,47 +192,76 @@
       <div class="wrap">
         <h2 class="section-title" data-i18n="dl.title">Download</h2>
         <p class="section-lead"><span data-i18n="dl.lead">Free, with no account and no ads. Check your download against</span> <code>SHA256SUMS.txt</code>. <span id="dl-version"></span></p>
-        <div class="cards dl">
-          <div class="card">
-            <h3>Windows</h3>
-            <p data-i18n="dl.win">Windows 10 and 11, x64 and ARM64: the MSI installer or a portable zip.</p>
-            <div class="dl-links" data-os="windows">
-              <a class="btn primary" href="https://github.com/rewind-os/rewind-os-app/releases/latest" data-i18n="dl.releases">Get it from Releases</a>
-            </div>
-          </div>
-          <div class="card">
-            <h3>Linux</h3>
-            <p data-i18n="dl.linux">x64 and ARM64: .deb, .rpm, Flatpak or tar.gz.</p>
-            <div class="dl-links" data-os="linux">
-              <a class="btn" href="https://github.com/rewind-os/rewind-os-app/releases/latest" data-i18n="dl.releases">Get it from Releases</a>
-            </div>
-          </div>
-          <div class="card">
-            <h3>macOS</h3>
-            <p data-i18n="dl.mac">macOS 11 or newer, Apple silicon and Intel. Drag the app from the .dmg to Applications.</p>
-            <div class="dl-links" data-os="macos">
-              <a class="btn" href="https://github.com/rewind-os/rewind-os-app/releases/latest" data-i18n="dl.releases">Get it from Releases</a>
-            </div>
-          </div>
+        <div class="tabs os-tabs" role="tablist" aria-label="Operating system" data-tabs="os">
+          <button type="button" role="tab" id="tab-windows" aria-controls="panel-windows" data-tab="windows">Windows</button>
+          <button type="button" role="tab" id="tab-macos" aria-controls="panel-macos" data-tab="macos">macOS</button>
+          <button type="button" role="tab" id="tab-linux" aria-controls="panel-linux" data-tab="linux">Linux</button>
         </div>
-        <div class="apt">
-          <h3 data-i18n="dl.apt.title">Linux: install with your package manager</h3>
-          <p data-i18n="dl.apt.body">Add the repository once and your system's updates keep Rewind OS up to date.</p>
-          <pre class="terminal" aria-label="Install with apt, dnf or zypper"><code><span class="c"># Debian, Ubuntu: the repository's signing key</span>
+
+        <div class="os-panel" id="panel-windows" role="tabpanel" aria-labelledby="tab-windows" data-panel="os:windows">
+          <h3 class="no-js-title">Windows</h3>
+          <p data-i18n="dl.win">Windows 10 and 11, x64 and ARM64: the MSI installer or a portable zip.</p>
+          <div class="dl-links" data-os="windows">
+            <a class="btn primary" href="https://github.com/rewind-os/rewind-os-app/releases/latest" data-i18n="dl.releases">Get it from Releases</a>
+          </div>
+          <h4 data-i18n="dl.ps">Or from PowerShell</h4>
+          <pre class="terminal"><code><span class="c"># the latest MSI for this computer (x64 or ARM64)</span>
+<span class="p">&gt;</span> $arch = if ($env:PROCESSOR_ARCHITECTURE -eq 'ARM64') { 'arm64' } else { 'x64' }
+<span class="p">&gt;</span> $release = irm https://api.github.com/repos/rewind-os/rewind-os-app/releases/latest
+<span class="p">&gt;</span> $msi = ($release.assets | ? name -like "*windows-$arch.msi").browser_download_url
+<span class="p">&gt;</span> irm $msi -OutFile "$env:TEMP\rewind-os.msi"
+<span class="c"># install it (the Start menu, and rewind-os-cli in new terminals)</span>
+<span class="p">&gt;</span> Start-Process msiexec -ArgumentList "/i `"$env:TEMP\rewind-os.msi`"" -Wait</code></pre>
+          <p class="note" data-i18n="dl.unsigned">Not code-signed yet: if SmartScreen warns, choose “More info”, then “Run anyway”.</p>
+        </div>
+
+        <div class="os-panel" id="panel-macos" role="tabpanel" aria-labelledby="tab-macos" data-panel="os:macos">
+          <h3 class="no-js-title">macOS</h3>
+          <p data-i18n="dl.mac">macOS 11 or newer, Apple silicon and Intel. Drag the app from the .dmg to Applications.</p>
+          <div class="dl-links" data-os="macos">
+            <a class="btn primary" href="https://github.com/rewind-os/rewind-os-app/releases/latest" data-i18n="dl.releases">Get it from Releases</a>
+          </div>
+          <h4 data-i18n="dl.term">Or from a terminal</h4>
+          <pre class="terminal"><code><span class="c"># the latest .dmg, copied to Applications</span>
+<span class="p">$</span> url=$(curl -fsSL https://api.github.com/repos/rewind-os/rewind-os-app/releases/latest | grep -o 'https://[^"]*macos-universal\.dmg' | head -n 1)
+<span class="p">$</span> curl -fL "$url" -o /tmp/rewind-os.dmg
+<span class="p">$</span> hdiutil attach -nobrowse -mountpoint /tmp/rewind-os /tmp/rewind-os.dmg
+<span class="p">$</span> cp -R "/tmp/rewind-os/Rewind OS.app" /Applications/ &amp;&amp; hdiutil detach /tmp/rewind-os
+<span class="c"># the command line</span>
+<span class="p">$</span> sudo ln -sf "/Applications/Rewind OS.app/Contents/MacOS/rewind-os-cli" /usr/local/bin/rewind-os-cli</code></pre>
+          <p class="note" data-i18n="dl.macunsigned">Not notarized yet: the first time, Control-click the app and choose Open.</p>
+        </div>
+
+        <div class="os-panel" id="panel-linux" role="tabpanel" aria-labelledby="tab-linux" data-panel="os:linux">
+          <h3 class="no-js-title">Linux</h3>
+          <p data-i18n="dl.linux">x64 and ARM64: .deb, .rpm, Flatpak or tar.gz.</p>
+          <div class="dl-links" data-os="linux">
+            <a class="btn primary" href="https://github.com/rewind-os/rewind-os-app/releases/latest" data-i18n="dl.releases">Get it from Releases</a>
+          </div>
+          <h4 data-i18n="dl.apt.title">Or with your package manager, which keeps it up to date</h4>
+          <div class="tabs distro-tabs" role="tablist" aria-label="Distribution" data-tabs="distro">
+            <button type="button" role="tab" id="tab-debian" aria-controls="panel-debian" data-tab="debian">Debian, Ubuntu</button>
+            <button type="button" role="tab" id="tab-fedora" aria-controls="panel-fedora" data-tab="fedora">Fedora</button>
+            <button type="button" role="tab" id="tab-opensuse" aria-controls="panel-opensuse" data-tab="opensuse">openSUSE</button>
+            <button type="button" role="tab" id="tab-flatpak" aria-controls="panel-flatpak" data-tab="flatpak">Flatpak</button>
+          </div>
+          <pre class="terminal" id="panel-debian" role="tabpanel" aria-labelledby="tab-debian" data-panel="distro:debian"><code><span class="c"># Debian, Ubuntu: the repository's signing key and the repository</span>
 <span class="p">$</span> curl -fsSL https://rewind-os.github.io/rewind-os-app/rewind-os.gpg | sudo tee /usr/share/keyrings/rewind-os.gpg &gt;/dev/null
-<span class="c"># the repository</span>
 <span class="p">$</span> echo "deb [signed-by=/usr/share/keyrings/rewind-os.gpg] https://rewind-os.github.io/rewind-os-app stable main" | sudo tee /etc/apt/sources.list.d/rewind-os.list
-<span class="c"># install</span>
-<span class="p">$</span> sudo apt update &amp;&amp; sudo apt install rewind-os
-<span class="c"># Fedora</span>
+<span class="p">$</span> sudo apt update &amp;&amp; sudo apt install rewind-os</code></pre>
+          <pre class="terminal" id="panel-fedora" role="tabpanel" aria-labelledby="tab-fedora" data-panel="distro:fedora"><code><span class="c"># Fedora</span>
 <span class="p">$</span> sudo curl -fsSL -o /etc/yum.repos.d/rewind-os.repo https://rewind-os.github.io/rewind-os-app/rpm/rewind-os.repo
-<span class="p">$</span> sudo dnf install rewind-os
-<span class="c"># openSUSE</span>
+<span class="p">$</span> sudo dnf install rewind-os</code></pre>
+          <pre class="terminal" id="panel-opensuse" role="tabpanel" aria-labelledby="tab-opensuse" data-panel="distro:opensuse"><code><span class="c"># openSUSE</span>
 <span class="p">$</span> sudo zypper addrepo https://rewind-os.github.io/rewind-os-app/rpm/rewind-os.repo
 <span class="p">$</span> sudo zypper install rewind-os</code></pre>
+          <pre class="terminal" id="panel-flatpak" role="tabpanel" aria-labelledby="tab-flatpak" data-panel="distro:flatpak"><code><span class="c"># any distribution with Flatpak (x64 or ARM64)</span>
+<span class="p">$</span> arch=$([ "$(uname -m)" = aarch64 ] &amp;&amp; echo arm64 || echo x64)
+<span class="p">$</span> url=$(curl -fsSL https://api.github.com/repos/rewind-os/rewind-os-app/releases/latest | grep -o "https://[^\"]*linux-$arch\.flatpak" | head -n 1)
+<span class="p">$</span> curl -fL "$url" -o /tmp/rewind-os.flatpak &amp;&amp; flatpak install --user /tmp/rewind-os.flatpak
+<span class="p">$</span> flatpak run io.github.rewind_os.rewind_os_app</code></pre>
+          <p class="note" data-i18n="dl.nodesktop">On a computer without a desktop, skip recommended packages (<code>--no-install-recommends</code> with apt) to install only what <code>rewind-os-cli</code> needs.</p>
         </div>
-        <p class="note" data-i18n="dl.unsigned">Not code-signed yet: if SmartScreen warns, choose “More info”, then “Run anyway”.</p>
-        <p class="note" data-i18n="dl.macunsigned">Not notarized yet: the first time, Control-click the app and choose Open.</p>
       </div>
     </section>
   </main>
@@ -244,6 +274,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/main.js?v=2026-11-28" defer></script>
 </body>
 </html>

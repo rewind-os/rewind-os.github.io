@@ -46,11 +46,12 @@
     "f5.body": "Mira cuánto tarda en arrancar tu equipo, qué programas usan más procesador y memoria, y el plan de energía.",
     "f5.l1": "Desactiva ahí mismo un programa que retrasa el arranque",
     "f5.l3": "Los programas del propio sistema nunca se cierran",
-    "f6.tag": "Salud de los discos",
-    "f6.title": "Entérate antes de que un disco falle",
+    "f6.tag": "Salud",
+    "f6.title": "Entérate de cuándo se desgasta un disco o la batería",
     "f6.body": "Salud, temperatura, desgaste y errores de cada disco, y un aviso en Inicio antes de que falle.",
     "f6.l2": "Consultarlo no cambia nada",
     "f6.l3": "Los dispositivos con problemas de driver, nombrados en Inicio",
+    "f6.l4": "Cuánta carga guarda todavía la batería, en todos los sistemas",
     "safety.title": "La seguridad, lo primero",
     "safety.lead": "Nunca debe dejar un equipo sin arrancar ni borrar tus archivos.",
     "s1.title": "Pregunta antes de actuar",
@@ -72,8 +73,12 @@
     "dl.mac": "macOS 11 o posterior, Apple silicon e Intel. Arrastra la app del .dmg a Aplicaciones.",
     "dl.macunsigned": "Aún sin notarizar: la primera vez, haz Control-clic en la app y elige Abrir.",
     "dl.releases": "Ir a las versiones",
-    "dl.apt.title": "Linux: instálalo con tu gestor de paquetes",
-    "dl.apt.body": "Añade el repositorio una vez y las actualizaciones del sistema mantienen Rewind OS al día.",
+    "dl.apt.title": "O con tu gestor de paquetes, que lo mantiene al día",
+    "dl.ps": "O desde PowerShell",
+    "dl.term": "O desde una terminal",
+    "dl.copy": "Copiar",
+    "dl.copied": "Copiado",
+    "dl.nodesktop": "En un equipo sin escritorio, omite los paquetes recomendados (<code>--no-install-recommends</code> con apt) para instalar solo lo que necesita <code>rewind-os-cli</code>.",
     "dl.unsigned": "Aún sin firma de código: si SmartScreen avisa, elige «Más información» y luego «Ejecutar de todas formas».",
     "dl.version": "Última versión: {v}.",
     "footer.licence": "Código abierto con licencia MIT o Apache-2.0.",
@@ -192,4 +197,82 @@
     });
   }
   release();
+
+  // Tabs: the systems, and Linux's distributions. Without this script every panel shows.
+  function osGuess() {
+    var p = ((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent || "").toLowerCase();
+    if (p.indexOf("win") >= 0) return "windows";
+    if (p.indexOf("mac") >= 0 || p.indexOf("iphone") >= 0 || p.indexOf("ipad") >= 0) return "macos";
+    if (p.indexOf("linux") >= 0 || p.indexOf("x11") >= 0) return "linux";
+    return "windows";
+  }
+
+  function tabs(list, first) {
+    var group = list.getAttribute("data-tabs");
+    var buttons = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+    function select(name, focus) {
+      buttons.forEach(function (b) {
+        var on = b.getAttribute("data-tab") === name;
+        b.setAttribute("aria-selected", on ? "true" : "false");
+        b.tabIndex = on ? 0 : -1;
+        if (on && focus) b.focus();
+      });
+      document.querySelectorAll('[data-panel^="' + group + ':"]').forEach(function (panel) {
+        panel.hidden = panel.getAttribute("data-panel") !== group + ":" + name;
+      });
+    }
+    buttons.forEach(function (b, i) {
+      b.addEventListener("click", function () { select(b.getAttribute("data-tab")); });
+      b.addEventListener("keydown", function (e) {
+        var step = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (!step) return;
+        e.preventDefault();
+        var next = buttons[(i + step + buttons.length) % buttons.length];
+        select(next.getAttribute("data-tab"), true);
+      });
+    });
+    select(first);
+  }
+
+  document.documentElement.classList.add("js");
+  var osList = document.querySelector('[data-tabs="os"]');
+  // `#windows`, `#macos` or `#linux` opens that system's tab, to link to its instructions.
+  var linked = (location.hash || "").slice(1);
+  if (osList) tabs(osList, /^(windows|macos|linux)$/.test(linked) ? linked : osGuess());
+  if (/^(windows|macos|linux)$/.test(linked)) {
+    var section = document.getElementById("download");
+    if (section) section.scrollIntoView();
+  }
+  var distroList = document.querySelector('[data-tabs="distro"]');
+  if (distroList) tabs(distroList, "debian");
+
+  // A copy button on each install block: the commands only, without prompts and comments.
+  document.querySelectorAll(".download pre.terminal").forEach(function (pre) {
+    if (!navigator.clipboard) return;
+    var button = document.createElement("button");
+    button.type = "button";
+    button.className = "copy";
+    button.setAttribute("data-i18n", "dl.copy");
+    button.textContent = lang === "es" ? ES["dl.copy"] : "Copy";
+    button.addEventListener("click", function () {
+      var lines = [];
+      pre.querySelector("code").innerText.split("\n").forEach(function (line) {
+        if (/^\s*#/.test(line) || !line.trim()) return;
+        lines.push(line.replace(/^\s*[$>]\s?/, ""));
+      });
+      navigator.clipboard.writeText(lines.join("\n")).then(function () {
+        button.textContent = lang === "es" ? ES["dl.copied"] : "Copied";
+        setTimeout(function () { button.textContent = lang === "es" ? ES["dl.copy"] : "Copy"; }, 1500);
+      });
+    });
+    // Outside the scrolling block, so it stays put when a long line scrolls.
+    var box = document.createElement("div");
+    box.className = "term-box";
+    pre.parentNode.insertBefore(box, pre);
+    box.appendChild(pre);
+    box.appendChild(button);
+    // A hidden distribution's block hides its button too.
+    new MutationObserver(function () { box.hidden = pre.hidden; }).observe(pre, { attributes: true, attributeFilter: ["hidden"] });
+    box.hidden = pre.hidden;
+  });
 })();
