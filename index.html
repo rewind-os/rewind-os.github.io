@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rewind OS — take your disk back to clean</title>
+  <title>Rewind OS</title>
   <meta name="description" content="A small, fast, native app written in Rust that shows what uses your disk and removes what you do not need: temporary files, caches, leftovers of uninstalled programs and startup programs. It also shows what slows your computer down and whether your drives are failing.">
   <meta name="theme-color" content="#141414">
   <meta property="og:title" content="Rewind OS">
@@ -34,7 +34,7 @@
       <div class="wrap hero-inner">
         <p class="eyebrow" data-i18n="hero.eyebrow">Free and open source · Windows · Linux · macOS</p>
         <h1 data-i18n="hero.title">See what is using your disk.<br>Take your computer back to clean.</h1>
-        <p class="lead" data-i18n="hero.lead">Rewind OS finds temporary files, caches, leftovers of programs you uninstalled, large forgotten files and programs that start for no reason, and removes them safely. It also shows what slows your computer down and whether your drives are failing. A small, fast, native app written only in Rust.</p>
+        <p class="lead" data-i18n="hero.lead">Rewind OS finds temporary files, caches, leftovers of uninstalled programs and forgotten large files, and removes them safely. It also shows what slows your computer down. A small, fast app written in Rust.</p>
         <div class="actions">
           <a class="btn primary" id="download-main" href="https://github.com/rewind-os/rewind-os-app/releases/latest">
             <span data-i18n="hero.download">Download for Windows</span>
@@ -70,12 +70,10 @@
           <div class="text">
             <p class="tag" data-i18n="f1.tag">Disk analyzer</p>
             <h3 data-i18n="f1.title">Find out what takes up space, folder by folder</h3>
-            <p data-i18n="f1.body">A parallel scan of any drive or folder, shown as a sorted list, a treemap, the largest files and the size per file type. Show anything in the file manager or move it to the recycle bin.</p>
+            <p data-i18n="f1.body">Scan any drive or folder and see it as a list, a treemap and its largest files.</p>
             <ul>
-              <li data-i18n="f1.l1">Hard links counted once, so system folders show their real size</li>
-              <li data-i18n="f1.l2">Never follows symbolic links or junctions</li>
-              <li data-i18n="f1.l3">Duplicate files by content, with one copy always kept</li>
-              <li data-i18n="f1.l4">Large files nobody changed in over a year, without the ones programs need</li>
+              <li data-i18n="f1.l3">Duplicate files, always keeping one copy</li>
+              <li data-i18n="f1.l4">Large files nobody has touched in a year</li>
             </ul>
           </div>
           <figure class="shot"><img src="assets/img/analyzer.png?v=0.31.0" width="1200" height="780" loading="lazy" alt="Disk analyzer: total size, files, folders and scan time above a folder list and a treemap" data-i18n-alt="alt.analyzer"></figure>
@@ -85,14 +83,11 @@
           <div class="text">
             <p class="tag" data-i18n="f2.tag">Junk cleanup</p>
             <h3 data-i18n="f2.title">Temporary files and caches, labelled by how safe they are</h3>
-            <p data-i18n="f2.body">Update downloads, crash reports, browser and app caches, package manager caches, old installers and the recycle bin. Each category says whether it is safe, whether it is rebuilt later and whether it needs administrator rights.</p>
+            <p data-i18n="f2.body">Temporary files, caches, old installers and the recycle bin, each category marked by how safe it is.</p>
             <ul>
-              <li data-i18n="f2.l1">Files a program has open are skipped and reported</li>
               <li data-i18n="f2.l2">Only caches that rebuild themselves are deleted for good</li>
-              <li data-i18n="f2.l3">Compacts the virtual disks of WSL and Docker Desktop, which never shrink by themselves</li>
-              <li data-i18n="f2.l4">Deletes old Windows restore points and always keeps the newest on each drive</li>
-              <li data-i18n="f2.l5">Removes old Windows driver packages that no device uses; the newest version of each driver always stays</li>
-              <li data-i18n="f2.l6">Removes old Linux kernels with APT; the kernel in use and the newest always stay</li>
+              <li data-i18n="f2.l3">Shrinks the virtual disks of WSL and Docker</li>
+              <li data-i18n="f2.l5">Old driver packages and Linux kernels, always keeping the newest</li>
             </ul>
           </div>
           <figure class="shot"><img src="assets/img/cleanup.png?v=0.31.0" width="1200" height="780" loading="lazy" alt="Junk cleanup: junk found, selected to clean, and where the junk is as a stacked bar" data-i18n-alt="alt.cleanup"></figure>
@@ -102,9 +97,9 @@
           <div class="text">
             <p class="tag" data-i18n="f3.tag">Programs</p>
             <h3 data-i18n="f3.title">Uninstall, then sweep up what programs leave behind</h3>
-            <p data-i18n="f3.body">Installed programs with their icons, size and install date, each with its own uninstaller. Afterwards, Rewind OS finds folders no installed program refers to any more and sends them to the recycle bin.</p>
+            <p data-i18n="f3.body">Uninstall programs with their own uninstaller, then sweep up the folders they leave behind.</p>
             <ul>
-              <li data-i18n="f3.l1">Registry keys of removed programs are reported, never removed</li>
+              <li data-i18n="f3.l1">Registry keys are reported, never removed</li>
               <li data-i18n="f3.l2">APT, RPM, pacman, Flatpak and Snap on Linux</li>
             </ul>
           </div>
@@ -115,10 +110,9 @@
           <div class="text">
             <p class="tag" data-i18n="f4.tag">Startup and Windows</p>
             <h3 data-i18n="f4.title">A faster start and a quieter Windows</h3>
-            <p data-i18n="f4.body">Turn startup programs, the scheduled tasks programs add for themselves and their services on and off. On macOS, launch agents and the apps that open at login too; a login item you turn off can be turned back on as it was. Make Windows lighter by turning off ads, suggestions and tracking from a closed list of documented settings, each of which can be undone.</p>
+            <p data-i18n="f4.body">Turn startup programs, scheduled tasks and services off and on, and make Windows lighter with settings you can undo.</p>
             <ul>
-              <li data-i18n="f4.l1">Entries the system needs can be turned on, never off</li>
-              <li data-i18n="f4.l2">Services are set to start when needed, never disabled</li>
+              <li data-i18n="f4.l1">What the system needs is never turned off</li>
             </ul>
           </div>
           <figure class="shot"><img src="assets/img/startup.png?v=0.31.0" width="1200" height="780" loading="lazy" alt="Startup programs: what starts with the system, turned off, needed by the system, entries as cards and the selected one's details with its switch" data-i18n-alt="alt.startup"></figure>
@@ -128,11 +122,10 @@
           <div class="text">
             <p class="tag" data-i18n="f5.tag">Speed</p>
             <h3 data-i18n="f5.title">Find out what slows your computer down</h3>
-            <p data-i18n="f5.body">See how long the computer takes to start and what made it slower, from the system's own records. See which open programs use the most processor and memory right now, and close one. Switch the power plan when the computer saves energy at the cost of speed.</p>
+            <p data-i18n="f5.body">See how long your computer takes to start, which programs use the most processor and memory, and the power plan.</p>
             <ul>
-              <li data-i18n="f5.l1">A program that slows the start can be turned off right there</li>
-              <li data-i18n="f5.l2">Programs are asked to close as their window would; forcing it asks again</li>
-              <li data-i18n="f5.l3">The system's own programs and other accounts' are never closed</li>
+              <li data-i18n="f5.l1">Turn off a program that slows the start, right there</li>
+              <li data-i18n="f5.l3">The system's own programs are never closed</li>
             </ul>
           </div>
           <figure class="shot"><img src="assets/img/speed.png?v=0.31.0" width="1200" height="780" loading="lazy" alt="Startup speed: the last start, time until the desktop was ready, the slowest step, and what took longest to start, each with its kind and duration" data-i18n-alt="alt.speed"></figure>
@@ -142,11 +135,10 @@
           <div class="text">
             <p class="tag" data-i18n="f6.tag">Disk health</p>
             <h3 data-i18n="f6.title">Know when a drive is about to fail</h3>
-            <p data-i18n="f6.body">What each drive reports about itself: its health, temperature, wear, hours powered on and errors. If one is failing or needs attention, Home says so first, so you can copy your files in time. Optimize the drives the way the system does on its own: TRIM on SSDs, defragmentation of hard drives on Windows.</p>
+            <p data-i18n="f6.body">Health, temperature, wear and errors of each drive, and a warning on Home before one fails.</p>
             <ul>
-              <li data-i18n="f6.l1">A drive that says it is fine still gets a warning when its figures show otherwise</li>
-              <li data-i18n="f6.l2">Reading changes nothing; optimizing asks first and deletes nothing</li>
-              <li data-i18n="f6.l3">On Windows, Home also names a device that stopped working because of its driver, and opens Device Manager</li>
+              <li data-i18n="f6.l2">Reading changes nothing</li>
+              <li data-i18n="f6.l3">Devices with a driver problem, named on Home</li>
             </ul>
           </div>
           <figure class="shot"><img src="assets/img/disks.png?v=0.31.0" width="1200" height="780" loading="lazy" alt="Disk health: a healthy SSD and a hard drive that needs attention, with temperature, hours powered on, damaged sectors and the reasons" data-i18n-alt="alt.disks"></figure>
@@ -157,7 +149,7 @@
     <section id="safety" class="safety">
       <div class="wrap">
         <h2 class="section-title" data-i18n="safety.title">Safety first</h2>
-        <p class="section-lead" data-i18n="safety.lead">A cleaner must never leave a computer unable to start or wipe personal files. Every removal goes through one safety guard, with tests for each place it may touch.</p>
+        <p class="section-lead" data-i18n="safety.lead">It must never leave a computer unable to start or wipe your files.</p>
         <div class="cards">
           <div class="card"><h3 data-i18n="s1.title">Asks before it acts</h3><p data-i18n="s1.body">Nothing is deleted without a confirmation. In the command line, every change needs <code>--yes</code>.</p></div>
           <div class="card"><h3 data-i18n="s2.title">Recycle bin by default</h3><p data-i18n="s2.body">Your files go to the recycle bin, so you can restore them. Only caches that rebuild themselves are deleted for good.</p></div>
@@ -171,7 +163,7 @@
       <div class="wrap cli-inner">
         <div class="text">
           <h2 class="section-title" data-i18n="cli.title">Everything the app does, from the command line</h2>
-          <p data-i18n="cli.body">One engine drives the desktop app and <code>rewind-os-cli</code>, so every feature is also a command you can script. With <code>rewind-os-cli mcp</code>, assistants can use the same tools over the Model Context Protocol, read-only unless you open up more, one flag at a time. In a terminal, a line shows how far a scan or a cleanup has got and how long it has taken; Ctrl+C stops it and prints what it did so far, marked as stopped. On a server or over SSH, <code>rewind-os-cli tui</code> opens full-screen views driven by keys or the mouse: Home, the disk by folder size, the cleanup, which always asks before it cleans, startup programs to turn off and on, installed programs to uninstall, duplicate files, program leftovers and build folders to pick and remove, never the last copy of a file, running programs to close and the system's own maintenance tools.</p>
+          <p data-i18n="cli.body">Every feature is also a command you can script with <code>rewind-os-cli</code>. <code>rewind-os-cli mcp</code> lets AI assistants use the same tools, read-only by default, and <code>rewind-os-cli tui</code> opens full-screen views for servers and SSH.</p>
         </div>
         <pre class="terminal" aria-label="Command line examples"><code><span class="c"># what is worth doing on this computer</span>
 <span class="p">$</span> rewind-os-cli recommend
@@ -202,21 +194,21 @@
         <div class="cards dl">
           <div class="card">
             <h3>Windows</h3>
-            <p data-i18n="dl.win">Windows 10 and 11, x64 and ARM64. Install with the MSI (Start menu, <code>rewind-os-cli</code> on the PATH in new terminals, uninstall from Settings) or run the portable zip without installing.</p>
+            <p data-i18n="dl.win">Windows 10 and 11, x64 and ARM64: the MSI installer or a portable zip.</p>
             <div class="dl-links" data-os="windows">
               <a class="btn primary" href="https://github.com/rewind-os/rewind-os-app/releases/latest" data-i18n="dl.releases">Get it from Releases</a>
             </div>
           </div>
           <div class="card">
             <h3>Linux</h3>
-            <p data-i18n="dl.linux">x64 and ARM64: a .deb for Debian and Ubuntu, an .rpm for Fedora and openSUSE, a Flatpak bundle or a plain tar.gz.</p>
+            <p data-i18n="dl.linux">x64 and ARM64: .deb, .rpm, Flatpak or tar.gz.</p>
             <div class="dl-links" data-os="linux">
               <a class="btn" href="https://github.com/rewind-os/rewind-os-app/releases/latest" data-i18n="dl.releases">Get it from Releases</a>
             </div>
           </div>
           <div class="card">
             <h3>macOS</h3>
-            <p data-i18n="dl.mac">macOS 11 or newer, Apple silicon and Intel in one app. Open the .dmg and drag Rewind OS to Applications. Some tools are still Windows and Linux only.</p>
+            <p data-i18n="dl.mac">macOS 11 or newer, Apple silicon and Intel. Drag the app from the .dmg to Applications.</p>
             <div class="dl-links" data-os="macos">
               <a class="btn" href="https://github.com/rewind-os/rewind-os-app/releases/latest" data-i18n="dl.releases">Get it from Releases</a>
             </div>
@@ -224,7 +216,7 @@
         </div>
         <div class="apt">
           <h3 data-i18n="dl.apt.title">Linux: install with your package manager</h3>
-          <p data-i18n="dl.apt.body">Add the repository once; the system's updates then keep Rewind OS up to date. Debian and Ubuntu use apt, Fedora dnf and openSUSE zypper. On a computer without a desktop, skip recommended packages (<code>--no-install-recommends</code>, or <code>--setopt=install_weak_deps=False</code> with dnf) to install only what <code>rewind-os-cli</code> needs.</p>
+          <p data-i18n="dl.apt.body">Add the repository once and your system's updates keep Rewind OS up to date.</p>
           <pre class="terminal" aria-label="Install with apt, dnf or zypper"><code><span class="c"># Debian, Ubuntu: the repository's signing key</span>
 <span class="p">$</span> curl -fsSL https://rewind-os.github.io/rewind-os-app/rewind-os.gpg | sudo tee /usr/share/keyrings/rewind-os.gpg &gt;/dev/null
 <span class="c"># the repository</span>
@@ -238,8 +230,8 @@
 <span class="p">$</span> sudo zypper addrepo https://rewind-os.github.io/rewind-os-app/rpm/rewind-os.repo
 <span class="p">$</span> sudo zypper install rewind-os</code></pre>
         </div>
-        <p class="note" data-i18n="dl.unsigned">Builds are not code-signed yet, so Windows SmartScreen may warn the first time you open the app: choose “More info”, then “Run anyway”.</p>
-        <p class="note" data-i18n="dl.macunsigned">On macOS the app is not signed by an Apple developer account yet, so the first time macOS asks to confirm it: Control-click the app and choose Open, or go to System Settings, Privacy &amp; Security, Open Anyway.</p>
+        <p class="note" data-i18n="dl.unsigned">Not code-signed yet: if SmartScreen warns, choose “More info”, then “Run anyway”.</p>
+        <p class="note" data-i18n="dl.macunsigned">Not notarized yet: the first time, Control-click the app and choose Open.</p>
       </div>
     </section>
   </main>
